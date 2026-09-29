@@ -1,8 +1,10 @@
-FROM python:3.13 
+FROM ubuntu:16.04
 
-LABEL maintainer="Christopher Kim ckim67@cmc.edu"
+MAINTAINER Chris Kim "ckim67@cmc.edu"
 
-# We copy just the requirements.txt first to leverage Docker cache
+RUN apt-get update -y && \
+    apt-get install -y python-pip python-dev
+
 COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
